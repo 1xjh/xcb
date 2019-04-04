@@ -1,0 +1,7 @@
+<view class="font yuding">
+  <view class="yuding_banner">
+    <icon type="success" size="70"/>
+    <text class="yuding_banner1">支付成功</text>
+  </view>
+  <view bindtap="home" class="yuding_fanhui">返回首页</view>
+</view>

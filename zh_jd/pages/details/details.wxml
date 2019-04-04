@@ -1,0 +1,109 @@
+<!--zh_jd/pages/details/details.wxml-->
+<!-- 我的头部 -->
+<wxs module="filters" src="details.wxs"></wxs>
+<view class="details">
+  <view class="details_head">
+    <view>
+      <view class="details_icon">
+        <icon type="search" size="20" />
+      </view>
+      <input class="details_search" value="{{name}}" bindinput='searchList' placeholder="{{name!='' ? name : '可以搜索珠海'}}"></input>
+    </view>
+  </view>
+  <view class="screening_box">
+    <!-- 筛选标题 -->
+    <view class="tabTit box">
+      <navigator url="../sord/sord">
+        <view class="fle1 box">
+          <text>推荐排序</text>
+          <image src="../../images/Path-2@2x.png"></image>
+        </view>
+      </navigator>
+      <navigator url="../site/site">
+        <view class="fle1 box">
+          <text>位置</text>
+          <image src="../../images/Path-2@2x.png"></image>
+        </view>
+      </navigator>
+      <navigator url="../screening/screening">
+        <view class="fle1 box">
+          <text>筛选</text>
+          <image src="../../images/Path-2@2x.png"></image>
+        </view>
+      </navigator>
+    </view>
+    <view class="d_list">
+      <view class="d_content " wx:for="{{room_list}}" wx:key="id">
+        <view class="d_img" data-id='{{item.id}}' bindtap='jumpDetails'>
+          <image src='{{item.logo}}'></image>
+        </view>
+        <view class="d_good box">
+          <view wx:for="{{item.tab_arr}}" wx:for-item='tab' wx:key="id">
+            <view class="d_good_font">{{tab}}</view>
+          </view>
+        </view>
+        <view class="d_title box">
+          <view class="d_site">
+          </view>
+          <view class="d_site_name">{{item.s_name}}</view>
+        </view>
+        <view class="d_info box">
+          <view class="d_fang">{{item.name}}</view>
+          <text class="d_ren" decode="{{true}}">{{item.room_num}}居 {{item.bed_num}}床 &nbsp;&nbsp;&nbsp;  {{item.people}}人</text>
+          <view class="d_fen">{{item.room_score}}分</view>
+        </view>
+        <view class="d_info box">
+          <view class="d_price1" wx:if="{{isLogin}}">￥{{filters.toFix(item.online_price * vip)}}</view>
+          <view class="d_price1" wx:else>￥{{item.min_price}}</view>
+          <view class="d_price2">{{item.online_price}}元</view>
+          <view class="d_vip" wx:if="{{isLogin}}">会员价</view>
+          <view class="d_vip" wx:else>至尊会员价</view>
+        </view>
+        <!-- <view class="d_yuding" data-id='{{item.id}}' bindtap='jumpDetails'>
+          <view>预定</view>
+        </view> -->
+      </view>
+    </view>
+  </view>
+  <view class='none_coupon rel' wx:if="{{isList}}">
+    <view class='ab udlr'>
+      <image mode='widFix' class='ab lr' src="../../images/fotel.png"></image>
+      <view class='ab'>非常抱歉！未找到相关房源</view>
+    </view>
+  </view>
+  <!-- 熱門推薦 -->
+  <view class="d_list" wx:if="{{isList}}">
+    <view class="tuijian">为您推荐以下房源</view>
+    <view class="d_content" wx:for="{{recommend}}" wx:key="id">
+      <view class="d_img" data-id='{{item.id}}' bindtap='jumpDetails'>
+        <image src='{{item.logo}}'></image>
+      </view>
+      <view class="d_good box">
+        <view wx:for="{{item.tab_arr}}" wx:for-item='tab' wx:key="id">
+          <view class="d_good_font">{{tab}}</view>
+        </view>
+      </view>
+      <view class="d_title box">
+        <view class="d_site">
+          <image src='../../images/xiangqingdizhi@2x.png'></image>
+        </view>
+        <view class="d_site_name">{{item.s_name}}</view>
+      </view>
+      <view class="d_info box">
+        <view class="d_fang">{{item.name}}</view>
+        <text class="d_ren" decode="{{true}}"> {{item.room_num}}居 {{item.bed_num}}床 &nbsp;&nbsp;&nbsp;  {{item.people}}人</text>
+        <view class="d_fen">{{item.room_score}}分</view>
+      </view>
+      <view class="d_info box">
+        <view class="d_price1" wx:if="{{isLogin}}">￥{{filters.toFix(item.online_price * vip)}}</view>
+        <view class="d_price1" wx:else>￥{{item.min_price}}</view>
+        <view class="d_price2">{{item.online_price}}元</view>
+        <view class="d_vip" wx:if="{{isLogin}}">会员价</view>
+        <view class="d_vip" wx:else>至尊会员价</view>
+      </view>
+      <!-- <view class="d_yuding" data-id='{{item.id}}' bindtap='jumpDetails'>
+        <view>预定</view>
+      </view> -->
+    </view>
+  </view>
+</view>

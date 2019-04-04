@@ -1,0 +1,18 @@
+var filters = {
+  toFix: function (value) {
+    return value.toFixed(1)//此处1为保留两位小数
+  }
+}
+module.exports = {
+  toFix: filters.toFix
+}
+
+var price = {
+  toFix: function (value) {
+    return value.toFixed(2)//此处2为保留两位小数
+  }
+}
+module.exports = {
+  price: price.toFix,
+  toFix: filters.toFix
+}

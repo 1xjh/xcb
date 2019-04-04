@@ -1,0 +1,107 @@
+<!-- zh_jd/pages/index/index.wxml -->
+<view class='font'>
+  <!-- 头部 -->
+  <view class="swiper" style="height:{{bannerHeight+'px'}};width:{{bannerWidth+'px'}}">
+    <swiper indicator-dots="true" indicator-active-color="#fb5100" autoplay="true" interval="3000" duration="1200" circular='true'>
+      <swiper-item wx:for="{{platform.banner}}" wx:key="key">
+        <image bindload='bannerImg' bindtap='clickimg' data-index="{{index}}" style="height:{{bannerHeight+'px'}};width:{{bannerWidth+'px'}}" class="nav-icon" mode="aspectFill" lazy-load="true" src="{{item}}" />
+      </swiper-item>
+    </swiper>
+  </view>
+  <!-- 入住搜索 -->
+  <view class="residence">
+      <navigator url="../city/city">
+        <view class="residence_title">
+            <view>{{city}}市</view>
+            <text>全国民宿院子</text>
+        </view>
+      </navigator>
+    <view class="line"></view>
+    <!-- 选择时间 -->
+    <view class="residence_box" bindtap="bindViewTap">
+      <view class="residence_start">
+        <text>入住时间</text>
+        <view role="" aria-label="">{{date}}</view>
+      </view>
+      <view class="residence_day">{{time}}晚</view>
+      <view class="residence_end">
+        <text>离店时间</text>
+        <view role="" aria-label="">{{tomorrow}}</view>
+      </view>
+    </view>
+    <view class="line"></view>
+    <!-- 搜索 -->
+    <view class="search_box">
+      <icon type="search" size="20" />
+      <input class='search_area' bindinput='search' placeholder='民宿院子/位置/关键词' />
+    </view>
+    <view class="line"></view>
+    <view class="search_text" bindtap='searchTo'>
+      <text>搜索民宿院子</text>
+    </view>
+  </view>
+  <!-- 内容 -->
+  <view class='category'>
+    <!-- 家庭定制 -->
+    <view class="content_box">
+      <view>
+        <navigator url="../details/details?is_home=1&save=1">
+          <view class="title_left">
+            <text>家庭定制</text>
+            <view>家的温馨，在途中</view>
+          </view>
+          <view class='imgRight'>
+            <text>更多</text>
+            <image src='../../images/Path1@2x.png' lazy-load="true"></image>
+          </view>
+        </navigator>
+      </view>
+      <scroll-view scroll-x class="scroll-header" scroll-with-animation="false">
+          <view  class="scroll-view-item img_coller" wx:for="{{family}}" wx:key="key">
+            <image src="{{item.logo}}" bindtap='jumpJia' data-id="{{item.id}}"></image>
+            <view class="f_title">{{item.type_name}}</view>
+          </view>
+      </scroll-view>
+    </view>
+    <!-- 热门推荐 -->
+    <view  class="content_box">
+      <view>
+        <navigator url="../details/details?is_hot=1&save=1">
+          <view class="title_left">
+            <text>热门推荐</text>
+            <view>住进网红民宿,变声偶像主角</view>
+          </view>
+          <view class='imgRight'>
+            <text>更多</text>
+            <image src='../../images/Path1@2x.png' ></image>
+          </view>
+        </navigator>
+      </view>
+      <view class="hot_img_box">
+          <view class="hot_img" wx:for="{{recommend}}"  wx:key="index"  wx:if="{{index<4}}">
+            <image src="{{item.logo}}" lazy-load="true" bindtap='jumpRecommend' data-id="{{item.id}}"></image>
+          </view>
+      </view>
+    </view>
+     <!-- 周末去哪尔住 -->
+    <view  class="content_box">
+      <view>
+        <navigator url="../details/details?save=1">
+          <view class="title_left">
+            <text>周末去哪儿住</text>
+            <view>换个地方,发现城市之美</view>
+          </view>
+          <view class='imgRight'>
+            <text>更多</text>
+            <image src='../../images/Path1@2x.png'></image>
+          </view>
+        </navigator>
+      </view>
+      <view class="hot_img_box">
+          <view class="hot_img" wx:for="{{quan_arr}}" wx:key="index" wx:if="{{index<2}}" >
+            <image src="{{item.logo}}" lazy-load="true" bindtap='jumpQuna' data-id="{{item.id}}"></image>
+          </view>
+      </view>
+    </view>
+  </view>
+</view>

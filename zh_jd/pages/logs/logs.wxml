@@ -1,0 +1,98 @@
+<!--logs.wxml-->
+<view class="container font">
+  <view class='member-head'>
+    <!-- 用户信息 -->
+    <view class='child userinfo'>
+      <view class='avatar'>
+        <image class='icon' wx:if="{{avatarUrl===''}}" src='../../images/yonghu-fill@3x.png'></image>
+        <image class='icon' wx:else src='{{avatarUrl}}'></image>
+      </view>
+      <view class="box logs_name">
+        <view class="login_box" wx:if="{{nickName===''}}">
+          <button open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo" class="login">登陆</button>
+        </view>
+        <view class='nickname' wx:else>{{nickName}}
+          <text class='level'>{{vip}}</text>
+        </view>
+      </view>
+    </view>
+    <view class='integral box'>
+      <!-- 收藏 -->
+      <view class='integral_left box' bindtap='collect'>
+        <view class="left_image">
+          <image src='../../images/icon_collect.png'></image>
+        </view>
+        <text>我的收藏</text>
+      </view>
+      <view class="integral_right box">
+        <view class="right_image">
+          <image src='../../images/icon_integral.png'></image>
+        </view>
+        <text>我的积分</text>
+      </view>
+    </view>
+  </view>
+  <!-- 我的收藏/积分 -->
+  <view class="integral_background"></view>
+  <!-- 信息列表 -->
+  <view class='mine'>
+    <!-- 优惠券 -->
+    <view class='order rel'>
+      <view bindtap='jumpCoupon'>
+        <image mode='widthFix' class='img3 ab ud' src='../../images/icon_coupon.png'></image>
+        <text>我的优惠券</text>
+        <image mode='widthFix' class=' ab ud img2' src='../../images/Path1@2x.png'></image>
+      </view>
+    </view>
+    <!-- 名宿入驻 -->
+    <view class='order rel'>
+      <view bindtap='jumpCheck'>
+        <image mode='widthFix' class='img3 ab ud' src='../../images/move.png'></image>
+        <text>民宿入驻</text>
+        <image mode='widthFix' class=' ab ud img2' src='../../images/Path1@2x.png'></image>
+      </view>
+    </view>
+    <!-- 意见反馈 -->
+    <view class='order rel'>
+      <view bindtap='jumpFeedback'>
+        <image mode='widthFix' class='img3 ab ud' src='../../images/yj.png'></image>
+        <text>意见反馈</text>
+        <image mode='widthFix' class=' ab ud img2' src='../../images/Path1@2x.png'></image>
+      </view>
+    </view>
+    <view class='order rel'>
+      <navigator url='../about/about'>
+        <image mode='widthFix' class='img3 ab ud' src='../../images/gy.png'></image>
+        <text>关于天天惦记</text>
+        <image mode='widthFix' class=' ab ud img2' src='../../images/Path1@2x.png'></image>
+      </navigator>
+    </view>
+    <view class='order rel' catchtap="my_list">
+      <image mode='widthFix' class='img3 ab ud' src='../../images/fp.png'></image>
+      <text>开具发票</text>
+      <image mode='widthFix' class=' ab ud img2' src='../../images/Path1@2x.png'></image>
+    </view>
+    <view class='order rel' bindtap='business'>
+      <view bindtap='jumpMember'>
+        <image mode='widthFix' class='img3 ab ud' src='../../images/hy.png'></image>
+        <text>升级会员</text>
+        <image mode='widthFix' class=' ab ud img2' src='../../images/Path1@2x.png'></image>
+      </view>
+    </view>
+    <!-- 客服 -->
+    <view class='contant rel'>
+      <button open-type="contact" class="button">
+        <image mode='widthFix' class='img3 ab ud' src='../../images/kf.png'></image>
+        <text>我的客服</text>
+        <image mode='widthFix' class=' ab ud img2' src='../../images/Path1@2x.png'></image>
+      </button>
+    </view>
+    <view class='contant rel' wx:if="{{isLogin}}">
+      <view bindtap='secLogin'>
+        <image mode='widthFix' class='img3 ab ud' src='../../images/esc.png'></image>
+        <text>退出</text>
+        <image mode='widthFix' class=' ab ud img2' src='../../images/Path1@2x.png'></image>
+     </view>
+    </view>
+  </view>
+</view>

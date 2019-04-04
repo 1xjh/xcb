@@ -1,0 +1,12 @@
+<!--zh_jd/pages/sheji/sheji_details.wxml-->
+<view>
+  <view class="sheji_details">
+    <view class='sheji_details_title'>{{contents.title}}</view>
+    <view class="sheji_details_time">{{contents.create_time}}</view>
+    <view class="sheji_details_content">
+     {{contents.content}}
+    </view>
+  </view>
+</view>
+<view class='Tteacher'>预订名师院子</view>
+<view class='Tteacher_t' bindtap='jumpDetails'></view>

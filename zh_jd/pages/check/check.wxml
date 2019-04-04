@@ -1,0 +1,95 @@
+<!--zh_jd/pages/check/check.wxml-->
+<form bindsubmit="formSubmit" report-submit="true" bindreset="formReset">
+  <view>
+  </view>
+  <view class='container font'>
+    <view class='header'>
+    </view>
+    <view class='detailed'>
+      <view>
+        <view class='hotel_name '>
+          <view class='total fl'>民宿名称</view>
+          <view class='input fl'>
+            <input name='hotel_name' placeholder='请输入院子名称'></input>
+          </view>
+        </view>
+        <view class='hotel_name '>
+          <view class='total fl'>民宿地区</view>
+          <view class='input fl'>
+            <input name='address' placeholder='请输入民宿城市'></input>
+          </view>
+        </view>
+        <view class='hotel_name '>
+          <view class='total fl'>具体地址</view>
+          <view class='input fl'>
+            <input name='hotel_address' placeholder='请输入具体地址'></input>
+          </view>
+        </view>
+        <view class='hotel_name'>
+          <view class='total fl'>联系邮箱</view>
+          <view class='input fl'>
+            <input name="hotel_mail" type='text' class='hotel_tel' placeholder='联系邮箱'></input>
+          </view>
+        </view>
+        <view class='hotel_name '>
+          <view class='total fl'>开业日期</view>
+          <picker class="choice" mode="date" value="{{dates}}" bindchange="startDateChange">
+            <view class='input fl'>
+              <text wx:if="{{dates==null}}">请选择开业时间</text>
+              <text wx:if="{{dates!=null}}">{{dates}}</text>
+            </view>
+          </picker>
+        </view>
+        <view class='upload'>
+          <view class='upload_head'>上传营业执照与负责人身份证正反面图片
+          </view>
+          <view class='upload_img'>
+            <view class='rel'>
+              <view class='ab udlr' bindtap='choose'>
+                <image class='im ab udlr' wx:if="{{logo==null}}" src='../../images/sz.png'></image>
+                <image class='img' wx:if="{{logo!=null}}" src='{{logo}}'></image>
+              </view>
+            </view>
+            <view class='rel'>
+              <view class='ab udlr' bindtap='choose1'>
+                <image class='im ab udlr' wx:if="{{logo1==null}}" src='../../images/sz.png'></image>
+                <image class='img' wx:if="{{logo1!=null}}" src='{{logo1}}'></image>
+              </view>
+            </view>
+            <view class='rel'>
+              <view class='ab udlr' bindtap='choose2'>
+                <image class='im ab udlr' wx:if="{{logo2==null}}" src='../../images/sz.png'></image>
+                <image class='img' wx:if="{{logo2!=null}}" src='{{logo2}}'></image>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class='hotel_name' style='margin-top:-2rpx;'>
+          <view class='total fl'>手机号</view>
+          <view class='input fl'>
+            <input name='yz_tel' type='digit' bindblur="user_name" placeholder='请输入你现在的手机号' maxlength='11'></input>
+          </view>
+        </view>
+        <view class='hotel_name rel'>
+          <view class='total fl'>验证码</view>
+          <view class='input fl'>
+            <input name='yz_code' placeholder='请输入验证码'></input>
+          </view>
+          <view class='ab code' wx:if="{{getmsg=='获取验证码'}}" bindtap='sendmessg'>
+            {{getmsg}}
+          </view>
+          <view class='ab code' wx:if="{{getmsg!='获取验证码'}}" >
+            {{getmsg}}
+          </view>
+        </view>
+        <view class='verification '>请填入其他补充</view>
+        <view class='supplement '>
+          <textarea name="textarea" placeholder='如您有其他补充,请在这里输入'></textarea>
+        </view>
+        <view class='footer'>
+          <button form-type="submit">提交入驻审核</button>
+        </view>
+      </view>
+    </view>
+  </view>
+</form>

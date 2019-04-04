@@ -1,0 +1,14 @@
+<!--zh_jd/pages/sheji/sheji.wxml-->
+<view>
+  <view class="sheji_box box" wx:for="{{sList}}" wx:key="key">
+    <view class="sheji_content">
+      <view class="sheji_name">{{item.name}}</view>
+      <view class="sheji_title">人物简介：</view>
+      <view class="sheji_introduction">{{item.content}}</view>
+      <view class="sheji_dou" bindtap='more' data-id="{{item.id}}">查看跟多</view>
+    </view>
+    <view class="sheji_image">
+      <image src='{{item.head_img}}'></image>
+    </view>
+  </view>
+</view>

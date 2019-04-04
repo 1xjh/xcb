@@ -1,0 +1,316 @@
+<!--zh_jd/pages/yuanzi_details/yuanzi_details.wxml-->
+<wxs module="filters" src="toF.wxs"></wxs>
+<view>
+  <!-- 头部轮播 -->
+  <view class="swiper">
+    <swiper indicator-dots="true" indicator-active-color="#fb5100" autoplay="true" interval="3000" duration="1200" circular='true ' class="yz_banner">
+      <swiper-item wx:for="{{details.img}}" bindtap="previewImg" wx:key="key" data-effect_pic='{{details.img}}' data-src='{{item}}'>
+        <image src='{{item}}'></image>
+      </swiper-item>
+    </swiper>
+  </view>
+  <!-- 房间类型 -->
+  <view class='box yz_type'>
+    <view class="yz_type_title">
+      <text>{{details.name}}</text>
+      <view>
+        <image src='../../images/xiangqingdizhi@2x.png'></image> {{details.address}}</view>
+    </view>
+    <view>
+      <button open-type="share" class='yz_icon'>
+        <image src='../../images/fenxiang.png'></image>
+        <view>分享</view>
+      </button>
+    </view>
+  </view>
+  <view class='xian'></view>
+  <!-- 优惠 -->
+  <view class="yz_discounts box">
+    <view>连住优惠</view>
+    <view wx:for="{{details.favourable}}" wx:key="key">
+      {{item.day}}天{{item.Sale}}折
+    </view>
+  </view>
+  <view class="yz_coupon box">
+    <view class="yz_coupon_dian" bindtap='junmpCoupon'>点击领取店铺优惠卷</view>
+    <!-- 店铺优惠卷 -->
+    <view class="show  {{coupon_index ? 'yz_coupon_box' : ''}}">
+      <view class="yz_coupon_title">店铺优惠卷</view>
+      <view wx:for="{{coupon}}" wx:key="index" class='{{item.state===0? "coupon" : "active"}} box' bindtap='coupon' data-index="{{index}}">
+        <view class="coupon_price">
+          <view>￥</view>
+          <view>{{item.preferential }}
+          </view>
+        </view>
+        <view class="coupon_content">
+          <view>{{item.name}}</view>
+          <view>{{item.instruction}}</view>
+          <view>仅限线上支付使用</view>
+          <view>有效期：</view>
+          <view>{{item.start_time}}至{{item.end_time}}</view>
+        </view>
+        <view class="coupon_image">
+          <image src="{{item.state===0? hasSelect : noSelect}}"></image>
+        </view>
+      </view>
+      <view class='yz_quding' bindtap='junmpCoupon'>确定</view>
+    </view>
+  </view>
+  <view class="content_color">
+    <!-- 图标标题 -->
+    <view class='yz_icon_title1 box'>
+      <view class="yz_icon_content box">
+        <image src='../../images/independent.png'></image>
+        <text wx:if="{{details.room_type===1}}">整栋</text>
+        <text wx:else>独立单间</text>
+        <view wx:if="{{details.room_type===1}}">独立里院子共享</view>
+        <view wx:else>共享院子空间</view>
+      </view>
+      <view class="yz_icon_content box">
+        <image src='../../images/bed.png'></image>
+        <text>宜住{{details.people}}人 {{details.bed_num}}床</text>
+        <view>{{details.bed_type}}</view>
+      </view>
+      <view class="yz_icon_content box">
+        <image src='../../images/toilet.png'></image>
+        <text>卫生间</text>
+        <view>独立卫生间</view>
+      </view>
+    </view>
+    <!-- 入离时间 -->
+    <view class="yz_box">
+      <view class='yz_title'>入离日期</view>
+      <view class="residence_box" bindtap="bindViewTap">
+        <view class="residence_start">
+          <text>入住</text>
+          <view role="" aria-label="">{{date}}</view>
+        </view>
+        <view class="residence_day">共{{time}}晚</view>
+        <view class="residence_end">
+          <text>离店</text>
+          <view role="" aria-label="">{{tomorrow}}</view>
+        </view>
+      </view>
+    </view>
+    <!-- 房源简介 -->
+    <view class="yz_box">
+      <view bindtap='synopsis' class='yz_title1 box'>
+        <view class='yz_title'>房源简介</view>
+        <image src='../../images/jiantou1.png'></image>
+      </view>
+      <view class="yz_jianJie">
+        {{art}}
+      </view>
+      <view class="kong"></view>
+    </view>
+    <!-- 留言 -->
+    <view class="yz_box" wx:for="{{message}}" wx:key="index" wx:if="{{index<1}}">
+      <view class="liuyan box" bindtap='jump_dianping'>
+        <view class='yz_title'>留言 {{message.nv_length}}</view>
+        <view class='yz_pingjia box'>
+          <view class='star_box'>
+            <view class="starbox">
+              <view class="stars2" style="width: 130rpx">
+                <view>
+                  <image src='../../images/xing-hui@3x.png'></image>
+                  <image src='../../images/xing-hui@3x.png'></image>
+                  <image src='../../images/xing-hui@3x.png'></image>
+                  <image src='../../images/xing-hui@3x.png'></image>
+                  <image src='../../images/xing-hui@3x.png'></image>
+                </view>
+              </view>
+              <view class="stars" style="width: {{(item.score/5) * 100 + '%'}};">
+                <view>
+                  <image src="../../images/xing-hong@3x.png"></image>
+                  <image src="../../images/xing-hong@3x.png"></image>
+                  <image src="../../images/xing-hong@3x.png"></image>
+                  <image src="../../images/xing-hong@3x.png"></image>
+                  <image src="../../images/xing-hong@3x.png"></image>
+                </view>
+              </view>
+            </view>
+          </view>
+          <view class="yz_pingJia_title">综合评价 {{filters.toFix(item.score)}}</view>
+          <image src='../../images/jiantou1.png'></image>
+        </view>
+      </view>
+      <view class="name">
+        <view class='name_info box'>
+          <view class='box'>
+            <image src='{{item.user_heard}}'></image>
+            <view class="info_name">{{item.user_name}}</view>
+          </view>
+          <view class="info_time">{{item.cerated_time}}</view>
+        </view>
+        <view class="yz_info_content">
+          {{item.content}}
+        </view>
+        <view class="kong"></view>
+      </view>
+    </view>
+    <!-- 交通位置 -->
+    <view class="yz_box">
+      <view class='yz_title1 box'>
+        <view class='yz_title'>交通位置</view>
+        <image src='../../images/jiantou1.png'></image>
+      </view>
+        <view bindtap='intoMap' id="myMap" class="mapImage" markers="{{markers}}" >
+              <image src='{{details.map}}'></image>
+        </view>
+      <!-- <map bindtap='intoMap' id="myMap" markers="{{markers}}" style="width:100%;height:244rpx;" longitude="116.313972" latitude="39.980014" scale='16'>
+      </map> -->
+
+    </view>
+    <!-- 便利设施 -->
+    <view class="yz_box">
+      <view bindtap='facility' class='yz_title1 box' hover-class="none">
+        <view class='yz_title'>便利设施</view>
+        <image src='../../images/jiantou1.png'></image>
+      </view>
+      <view class='yz_icon_title box'>
+        <view class="yz_icon_content box" wx:if="{{details.setting.home[1]==1}}">
+           <image src='../../images/home1.png'></image>
+          <text>无线网络</text>
+        </view>
+        <view class="yz_icon_content box"  wx:if="{{details.setting.home[2]==1}}">
+          <image src='../../images/home2.png'></image>
+          <text>空调</text>
+        </view>
+        <view class="yz_icon_content box"  wx:if="{{details.setting.home[3]==1}}">
+          <image src='../../images/home3.png'></image>
+          <text>电视 </text>
+        </view>
+        <view class="yz_icon_content box"  wx:if="{{details.setting.home[6]==1}}">
+           <image src='../../images/home6.png'></image>
+          <text>热水壶</text>
+        </view>
+        <view>
+          <view class='sheSi'>+{{details.setting_num}}</view>
+        </view>
+      </view>
+    </view>
+    <!-- 预定须知 -->
+    <view class="yz_box">
+      <view class='yz_title'>预定须知</view>
+      <view class="yz_reserve">
+        <view>退订规则（由房东制定）</view>
+        <view>取消订单，收取订金的100%作为违约金支付给房东</view>
+        <view>提供发票</view>
+        <view>开具发票，详见开票说明</view>
+      </view>
+    </view>
+    <!-- 入住须知 -->
+    <view class="yz_box">
+      <view class='yz_title'>入住须知</view>
+      <!-- 入住须知 -->
+      <view class="yz_reserve">
+        <view class="box" wx:for="{{details.notification}}" wx:key="key">
+          <view>{{item.name}}</view>
+          <view> {{item.value}}</view>
+        </view>
+      </view>
+      <!-- 接待要求 -->
+      <view class="yz_reserve_title">
+        <view>接待要求</view>
+        <view class="yz_reserve_content">
+          <view wx:for="{{details.reception}}" wx:key="key">
+            <view>
+              <image wx:if="{{item.value>0}}" src='../../images/dui.png'></image>
+              <image wx:else src='../../images/cuo.png'></image>
+              {{item.name}}
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- 额外费用 -->
+    <view class="yz_box">
+      <view class='yz_title'>额外费用</view>
+      <view class="yz_reserve">
+        <view>不包含在总房费里，由房东线下收取</view>
+        <view>加人：最多入住3人，不接受加人</view>
+        <view wx:if="{{item.bed_add===0}}">加床：不允许加床</view>
+        <view wx:else>加床：允许加床</view>
+        <view>做饭：可做饭</view>
+      </view>
+    </view>
+    <!-- 周边房源推荐 -->
+    <view class="yz_box">
+      <view class="yz_circum_title">周边房源推荐</view>
+    </view>
+    <scroll-view scroll-x class="yz_circum_box box scroll-header" style="width: 100%">
+      <view class="yz_circum_box box">
+        <view class="d_content" wx:for="{{quan_arr}}" wx:key="key" bindtap='jumpdDetails' data-id="{{item.id}}">
+          <view class="d_bakcground"></view>
+          <view class="d_img">
+            <image src='{{item.logo}}'></image>
+          </view>
+          <view class="d_good box">
+            <view wx:for="{{item.tab_arr}}" wx:key="key">
+              <view class="d_good_font">{{item}}</view>
+            </view>
+          </view>
+          <view class="d_title box">
+            <view class="d_site">
+            </view>
+            <view class="d_site_name">{{item.s_name}}</view>
+          </view>
+          <view class="d_info box">
+            <view class="d_fang">{{item.name}} </view>
+            <text class="d_ren" decode="{{true}}">{{item.room_num}}居 {{item.bed_num}}床 &nbsp;&nbsp;&nbsp;  {{item.people}}人</text>
+            <view class="d_fen">{{item.room_score}}分</view>
+          </view>
+          <view class="d_info box">
+            <view class="d_price1" wx:if="{{isLogin}}">￥{{filters.toFix(item.online_price * vip)}}</view>
+            <view class="d_price1" wx:else>￥{{item.min_price}}</view>
+            <view class="d_price2">{{item.online_price}}元</view>
+            <view class="d_vip" wx:if="{{isLogin}}">会员价</view>
+            <view class="d_vip" wx:else>至尊会员价</view>
+          </view>
+          <!-- <view class="d_yuding">
+            <view>预定</view>
+          </view> -->
+        </view>
+      </view>
+    </scroll-view>
+    <!-- 价格说明 -->
+    <view class="yz_price">
+      <view>价格说明</view>
+      <view>划线价格作为参考价，改价格指商品或服务器的门市价、服务提 供商指导价、零售价或该商品或服务曾经展示过的销售价等，并非原价。</view>
+      <view>如有疑问，您可在预订前联系客服咨询。</view>
+    </view>
+    <view class="yz_taber_top"></view>
+    <!-- 底部栏 -->
+    <view class="yz_taber">
+      <view class='box'>
+        <view class='yz_icon_title box'>
+          <view class="yz_icon_content box">
+            <button class='button_server' open-type="contact">
+              <image src='../../images/chat.png'></image>
+              <text>聊天</text>
+            </button>
+          </view>
+          <view class="yz_icon_content box" bindtap='jump_call'>
+            <image src='../../images/call.png'></image>
+            <text>电话</text>
+          </view>
+          <view class="yz_icon_content box" bindtap='collect'>
+            <image wx:if="{{details.collect}}" src='../../images/collect1.png'></image>
+            <image wx:else src='../../images/collect.png'></image>
+            <text>收藏</text>
+          </view>
+        </view>
+        <view class='yz_button box'>
+          <view class='yz_price_a box'>
+            <view>￥{{price}}</view>
+            <view class="yz_price1_a">{{details.online_price * time}}</view>
+          </view>
+          <view bindtap='submitOrder'>
+            <image src='../../images/sandian.png'></image>
+            立即预订
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

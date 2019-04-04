@@ -1,0 +1,126 @@
+page {
+  height: 100%;
+  background: #eee;
+}
+
+.many_hotel {
+  background: #eee;
+}
+
+.box {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.mycollect_box {
+  width: 90%;
+  margin: 0 auto;
+  background: #fff;
+}
+
+.d_img {
+  width: 100%;
+  height: 360rpx;
+  background: #0ff;
+}
+
+.d_img image {
+  width: 100%;
+  height: 100%;
+}
+
+.d_good {
+  margin-top: 11rpx;
+}
+
+.d_good>view {
+  margin-right: 20rpx;
+  border: 1px solid rgba(64, 171, 145, 1);
+  width: 82rpx;
+  height: 26rpx;
+  font-family: SourceHanSansCN-Medium;
+  font-weight: 500;
+  border-radius: 5rpx;
+  line-height: 16rpx;
+  margin-left: 10rpx;
+}
+
+.d_good .d_good_font {
+  font-size: 16rpx;
+  padding: 7rpx;
+  color: rgba(64, 171, 145, 1);
+  text-align: center;
+}
+
+.d_site {
+  width: 22rpx;
+  height: 31rpx;
+  background: #0ff;
+  margin: 3rpx 12rpx 0 12rpx;
+}
+
+.d_title {
+  margin-top: 28rpx;
+}
+
+.d_site_name {
+  height: 25rpx;
+  font-size: 25rpx;
+  color: #222;
+}
+
+.d_info {
+  margin-left: 44rpx;
+  padding-top: 10rpx;
+  width: 308px;
+}
+
+.d_info .d_fang {
+  font-size: 24rpx;
+}
+
+.d_info .d_ren {
+  font-size: 24rpx;
+  margin-left: 56rpx;
+}
+
+.d_info .d_fen {
+  font-size: 18rpx;
+  color: #40ab91;
+  margin-left: 50rpx;
+}
+
+.d_price1 {
+  font-size: 24rpx;
+  padding-bottom: 16rpx;
+}
+
+.d_price2 {
+  font-size: 24rpx;
+  margin-left: 50rpx;
+}
+
+.d_yuding {
+  width: 100rpx;
+  height: 55rpx;
+  background: #de351f;
+  color: #fff;
+  float: right;
+  margin-right: 20rpx;
+  margin-top: -78rpx;
+  line-height: 53rpx;
+  border-radius: 6px;
+}
+
+.d_yuding>view {
+  font-size: 30rpx;
+  text-align: center;
+}
+
+.d_bakcground {
+  height: 25rpx;
+  width: 100%;
+  background: #eee;
+}

@@ -1,0 +1,24 @@
+/* pages/yuding/yuding.wxss */
+.yuding_banner{
+  height:800rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.yuding_banner1{
+  font-size: 46rpx;
+  margin-top: 100rpx;
+  font-weight: bold;
+}
+.yuding_fanhui{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  color: #fff;
+  font-size: 30rpx;
+  text-align: center;
+  height: 90rpx;
+  line-height: 90rpx;
+  background-color: #40AB91;
+}

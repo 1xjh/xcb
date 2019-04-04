@@ -1,0 +1,91 @@
+<!--zh_jd/pages/coupon/coupon.wxml-->
+<view class='container fon'>
+  <view class='header rel'>
+    <view class='background ab'></view>
+    <view class='option rel'>
+      <view class='option_son ab udlr'>
+        <view class="{{selected_effective?'effective':'default'}}" bindtap='selected_effective'>有效</view>
+        <view class="{{selected_already?'effective':'default'}}" bindtap='selected_already'>已使用</view>
+        <view class="{{selected_overdue?'effective':'default'}}" bindtap='selected_overdue'>已过期</view>
+      </view>
+    </view>
+  </view>
+  <!-- 有效 -->
+  <view class="{{selected_effective?'show':'hidden'}}">
+    <view wx:for="{{coupon}}" wx:if="{{item.state===2}}" wx:key="index" class='active box' bindtap='coupon' data-index="{{index}}">
+      <view class="coupon_price">
+        <view>￥</view>
+        <view>{{item.preferential}}
+        </view>
+      </view>
+      <view class="coupon_content">
+        <view>{{item.name}}</view>
+        <view>{{item.instruction}}</view>
+        <view>仅限线上支付使用</view>
+        <view>有效期：</view>
+        <view>{{item.start_time}}至{{item.end_time}}</view>
+      </view>
+      <view class="coupon_image">
+        <image src="../../images/coupon_1.png"></image>
+      </view>
+    </view>
+    <view class='none_coupon rel' wx:if="{{affective}}">
+      <view class='ab udlr'>
+        <image mode='widFix' class='ab lr' src="../../images/fotel.png"></image>
+        <view class='ab'>暂无已使用的优惠券</view>
+      </view>
+    </view>
+  </view>
+  <!-- 已使用 -->
+  <view class="{{selected_already?'show':'hidden'}}">
+    <view wx:for="{{coupon}}" wx:if="{{item.state===1}}" wx:key="index" class='active box' data-index="{{index}}">
+      <view class="coupon_price">
+        <view>￥</view>
+        <view>{{item.preferential}}
+        </view>
+      </view>
+      <view class="coupon_content">
+        <view>{{item.name}}</view>
+        <view>{{item.instruction}}</view>
+        <view>仅限线上支付使用</view>
+        <view>有效期：</view>
+        <view>{{item.start_time}}至{{item.end_time}}</view>
+      </view>
+      <view class="coupon_image">
+        <image src="../../images/coupon_3.png"></image>
+      </view>
+    </view>
+    <view class='none_coupon rel' wx:if="{{already}}">
+      <view class='ab udlr'>
+        <image mode='widFix' class='ab lr' src="../../images/fotel.png"></image>
+        <view class='ab'>暂无已使用的优惠券</view>
+      </view>
+    </view>
+  </view>
+  <!-- 已过期 -->
+  <view class="{{selected_overdue?'show':'hidden'}}">
+    <view wx:for="{{coupon}}" wx:if="{{item.state===3}}" wx:key="index" class='active box' data-index="{{index}}">
+      <view class="coupon_price">
+        <view>￥</view>
+        <view>{{item.preferential}}
+        </view>
+      </view>
+      <view class="coupon_content">
+        <view>{{item.name}}</view>
+        <view>{{item.instruction}}</view>
+        <view>仅限线上支付使用</view>
+        <view>有效期：</view>
+        <view>{{item.start_time}}至{{item.end_time}}</view>
+      </view>
+      <view class="coupon_image">
+        <image src="../../images/coupon_4.png"></image>
+      </view>
+    </view>
+    <view class='none_coupon rel' wx:if="{{overdue}}">
+      <view class='ab udlr'>
+        <image mode='widFix' class='ab lr' src="../../images/fotel.png"></image>
+        <view class='ab'>暂无已使用的优惠券</view>
+      </view>
+    </view>
+  </view>
+</view>
