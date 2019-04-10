@@ -23,95 +23,87 @@ page {
 .d_img {
   width: 100%;
   height: 360rpx;
-  background: #0ff;
 }
 
 .d_img image {
   width: 100%;
   height: 100%;
+  border-radius: 15rpx;
 }
 
 .d_good {
-  margin-top: 11rpx;
+  margin-top: 40rpx;
 }
 
 .d_good>view {
-  margin-right: 20rpx;
-  border: 1px solid rgba(64, 171, 145, 1);
-  width: 82rpx;
+  margin:0rpx 10rpx;
+  border: 1px solid #888;
   height: 26rpx;
   font-family: SourceHanSansCN-Medium;
   font-weight: 500;
   border-radius: 5rpx;
   line-height: 16rpx;
-  margin-left: 10rpx;
 }
 
 .d_good .d_good_font {
-  font-size: 16rpx;
-  padding: 7rpx;
-  color: rgba(64, 171, 145, 1);
+  font-size: 20rpx;
+  padding: 5rpx;
+  color: #888;
   text-align: center;
-}
-
-.d_site {
-  width: 22rpx;
-  height: 31rpx;
-  background: #0ff;
-  margin: 3rpx 12rpx 0 12rpx;
 }
 
 .d_title {
   margin-top: 28rpx;
+  height: 50rpx;
+  margin-left: 10rpx;
 }
 
 .d_site_name {
-  height: 25rpx;
-  font-size: 25rpx;
+  height:52rpx;
+  font-size: 35rpx;
   color: #222;
 }
 
 .d_info {
-  margin-left: 44rpx;
-  padding-top: 10rpx;
-  width: 308px;
+  padding-top: 15rpx;
+  margin-left:10rpx;
 }
 
 .d_info .d_fang {
-  font-size: 24rpx;
+  font-size: 26rpx;
 }
 
 .d_info .d_ren {
-  font-size: 24rpx;
-  margin-left: 56rpx;
+  font-size: 22rpx;
+  margin-left: 20rpx;
 }
 
 .d_info .d_fen {
-  font-size: 18rpx;
+  font-size: 20rpx;
   color: #40ab91;
-  margin-left: 50rpx;
+  margin-left: 35rpx;
 }
-
 .d_price1 {
-  font-size: 24rpx;
+  font-size: 30rpx;
   padding-bottom: 16rpx;
 }
 
 .d_price2 {
   font-size: 24rpx;
-  margin-left: 50rpx;
+  margin-top: 5px;
+  text-decoration: line-through;
+  margin-left: 10rpx;
 }
-
-.d_yuding {
-  width: 100rpx;
-  height: 55rpx;
-  background: #de351f;
-  color: #fff;
-  float: right;
-  margin-right: 20rpx;
-  margin-top: -78rpx;
-  line-height: 53rpx;
-  border-radius: 6px;
+.d_vip {
+  margin-left: 20rpx;
+  font-size: 21rpx;
+  color: #ffa500;
+  border: 1px solid #ffdead;
+  background: #ffdead;
+  height: 31rpx;
+  padding: 0rpx 10rpx;
+  line-height: 30rpx;
+  letter-spacing: 3rpx;
 }
 
 .d_yuding>view {

@@ -4,15 +4,15 @@
   <view class="swiper" style="height:{{bannerHeight+'px'}};width:{{bannerWidth+'px'}}">
     <swiper indicator-dots="true" indicator-active-color="#fb5100" autoplay="true" interval="3000" duration="1200" circular='true'>
       <swiper-item wx:for="{{platform.banner}}" wx:key="key">
-        <image bindload='bannerImg' bindtap='clickimg' data-index="{{index}}" style="height:{{bannerHeight+'px'}};width:{{bannerWidth+'px'}}" class="nav-icon" mode="aspectFill" lazy-load="true" src="{{item}}" />
+        <image bindload='bannerImg' bindtap='clickimg' data-item="{{item}}" style="height:{{bannerHeight+'px'}};width:{{bannerWidth+'px'}}" class="nav-icon" mode="aspectFill" lazy-load="true" src="{{item.img}}" />
       </swiper-item>
     </swiper>
   </view>
   <!-- 入住搜索 -->
   <view class="residence">
-      <navigator url="../city/city">
+      <navigator url="../city/city" hover-class="none">
         <view class="residence_title">
-            <view>{{city}}市</view>
+            <view>{{city}}</view>
             <text>全国民宿院子</text>
         </view>
       </navigator>
@@ -45,7 +45,7 @@
     <!-- 家庭定制 -->
     <view class="content_box">
       <view>
-        <navigator url="../details/details?is_home=1&save=1">
+        <navigator url="../details/details?is_home=1&save=1"  hover-class="none">
           <view class="title_left">
             <text>家庭定制</text>
             <view>家的温馨，在途中</view>
@@ -66,7 +66,7 @@
     <!-- 热门推荐 -->
     <view  class="content_box">
       <view>
-        <navigator url="../details/details?is_hot=1&save=1">
+        <navigator url="../details/details?is_hot=1&save=1"  hover-class="none">
           <view class="title_left">
             <text>热门推荐</text>
             <view>住进网红民宿,变声偶像主角</view>
@@ -86,10 +86,12 @@
      <!-- 周末去哪尔住 -->
     <view  class="content_box">
       <view>
-        <navigator url="../details/details?save=1">
+        <navigator url="../details/details?save=1"  hover-class="none">
           <view class="title_left">
+
             <text>周末去哪儿住</text>
             <view>换个地方,发现城市之美</view>
+
           </view>
           <view class='imgRight'>
             <text>更多</text>

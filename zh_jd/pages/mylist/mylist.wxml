@@ -5,7 +5,7 @@
       <view class="weui-tab">
         <view class="weui-navbar">
           <view id="all" class="weui-navbar__item {{activeIndex == 'all' ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
-            <view class="weui-navbar__title">全部</view>
+            <view class="weui-navbar__title"  >全部</view>
           </view>
           <!-- 标题 -->
           <block wx:for="{{tabs}}" wx:key="*this">
@@ -18,14 +18,14 @@
         <view class="weui-tab__panel">
 
           <!--全部 -->
-          <view hidden="{{activeIndex != 'all'}}">
+          <view hidden="{{activeIndex != 'all'}}" style="margin-bottom: 30rpx;">
             <view wx:if="{{!isLogin}}">
               <view class="mylist_back1">
                 <image class="mylist_back2" src="../../images/backg.png"></image>
               </view>
               <view class='aaa'>亲，还没有登陆哦</view>
             </view>
-            <view wx:if="{{aruzhu==false && azhifu==false && awancheng==false && isLogin}}">
+            <view wx:if="{{all==false && isLogin}}">
               <view class="mylist_back1">
                 <image class="mylist_back2" src="../../images/backg.png"></image>
               </view>

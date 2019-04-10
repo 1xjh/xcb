@@ -36,6 +36,6 @@
   </view>
 </block>
 <view class='calendar_bottom'>
-  <view bindtap='abrogate'>清空</view>
+  <view bindtap='abrogate'>取消</view>
   <view bindtap='sure'>确定</view>
 </view>

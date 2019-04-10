@@ -19,6 +19,13 @@ Page({
    */
   onLoad: function (options) {
     var that = this
+    var vip = wx.getStorageSync("users");
+    if (vip) {
+      vip = vip.member.value == 10 ? 1 : vip.member.value * 0.1
+    }
+    this.setData({
+      vip: vip
+    })
     app.util.request({
       'url': 'index/Accommoda/getCollRoom',
       'cachetime': '0',

@@ -7,10 +7,6 @@ page{
     align-content: center;
     align-items: center;
 }
-
-.pink-color {
-  color: #EB5E18;
-}
 .white-color {
   color: #fff;
 }
@@ -160,6 +156,7 @@ page{
   background: #40AB91;
   flex: 3;
   text-align: center;
+  color: #fff;
 }
 .wufang{
   font-size: 26rpx;

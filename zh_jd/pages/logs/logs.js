@@ -193,6 +193,12 @@ Page({
         })
       }
   },
+  //开发票
+  invoice:function(){
+    wx.navigateTo({
+      url: '../invoice/invoice',
+    })
+  },
   // 我的优惠卷
   jumpCoupon: function () {
     if (this.data.isLogin) {

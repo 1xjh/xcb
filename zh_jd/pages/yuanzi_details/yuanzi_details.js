@@ -122,8 +122,7 @@ Page({
               that.setData({
                 coupon: coupon,
               })
-            } else {
-              console.log("优惠券以使用")
+              console.log(that.data.coupon)
             }
           },
         })

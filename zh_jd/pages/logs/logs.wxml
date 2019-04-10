@@ -67,7 +67,7 @@
         <image mode='widthFix' class=' ab ud img2' src='../../images/Path1@2x.png'></image>
       </navigator>
     </view>
-    <view class='order rel' catchtap="my_list">
+    <view class='order rel' bindtap='invoice'>
       <image mode='widthFix' class='img3 ab ud' src='../../images/fp.png'></image>
       <text>开具发票</text>
       <image mode='widthFix' class=' ab ud img2' src='../../images/Path1@2x.png'></image>

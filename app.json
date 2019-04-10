@@ -1,7 +1,7 @@
 {
   "pages": [
-    "zh_jd/pages/mylist/mylist",
     "zh_jd/pages/index/index",
+    "zh_jd/pages/mylist/mylist",
     "zh_jd/pages/logs/logs",
     "zh_jd/pages/sheji/sheji",
     "zh_jd/pages/sheji/sheji_details",
@@ -30,7 +30,10 @@
     "zh_jd/pages/yuanzi_details/facility",
     "zh_jd/pages/yuanzi_details/synopsis",
     "zh_jd/pages/city/city",
-    "zh_jd/pages/about/about"
+    "zh_jd/pages/about/about",
+    "zh_jd/pages/sord/sord",
+    "zh_jd/pages/site/site",
+    "zh_jd/pages/invoice/invoice"
   ],
   "permission": {
     "scope.userLocation": {

@@ -1,42 +1,32 @@
-
+<wxs module="filters" src="mycollect.wxs"></wxs>
 <view class='many_hotel'>
-<view  wx:if="{{mycollect!=''}}">
-    <view  class='hotel fon' wx:for="{{mycollect}}" wx:key="{{index}}"  bindtap='jumpDetails' data-id="{{item.room_id}}">
-        <view class="mycollect_box">
-          <view class="d_bakcground"></view>
-          <view class="d_img">
-            <image src='{{item.room.logo}}'></image>
-          </view>
-          <view class="d_good box" >
-            <view wx:for="{{item.room.tab_arr}}" wx:key="key">
-              <view class="d_good_font">{{item}}</view>
-            </view>
-          </view>
-          <view class="d_title box">
-            <view class="d_site">
-              <!-- <image></image> -->
-            </view>
-            <view class="d_site_name">{{item.room.link_name}}</view>
-          </view>
-          <view class="d_info box">
-            <view class="d_fang">{{item.room.name}} </view>
-            <text class="d_ren" decode="{{true}}"> {{item.room.room_num}}居 {{item.room.bed_num}}床 {{item.room.people}}人</text>
-            <view class="d_fen">{{item.room.room_score}}</view>
-          </view>
-          <view class="d_info box">
-          <!-- <view class="d_price1" wx:if="{{isLogin}}">￥{{item.online_price * vip}}</view>
-          <view class="d_price1" wx:else>￥{{item.min_price}}</view>
-          <view class="d_price2">{{item.online_price}}元</view>
-          <view class="d_vip" wx:if="{{isLogin}}">会员价</view>
-          <view class="d_vip" wx:else>至尊会员价</view> -->
-            <view class="d_price1">市场价格：{{item.room.original_price}}元</view>
-            <view class="d_price2">会员价格: {{item.room.online_price}}元</view>
-          </view>
-          <view class="d_yuding">
-            <view>预定</view>
+  <view wx:if="{{mycollect!=''}}">
+    <view class='hotel fon' wx:for="{{mycollect}}" wx:key="{{index}}" bindtap='jumpDetails' data-id="{{item.room_id}}">
+      <view class="mycollect_box">
+        <view class="d_bakcground"></view>
+        <view class="d_img">
+          <image src='{{item.room.logo}}'></image>
+        </view>
+        <view class="d_good box">
+          <view wx:for="{{item.room.tab_arr}}" wx:key="key">
+            <view class="d_good_font">{{item}}</view>
           </view>
         </view>
+        <view class="d_title box">
+          <view class="d_site_name">{{item.room.link_name}}</view>
+        </view>
+        <view class="d_info box">
+          <view class="d_fang">{{item.room.name}} </view>
+          <text class="d_ren" decode="{{true}}"> {{item.room.room_num}}居 {{item.room.bed_num}}床 {{item.room.people}}人</text>
+          <view class="d_fen">{{item.room.room_score}}</view>
+        </view>
+        <view class="d_info box">
+          <view class="d_price1">￥{{filters.toFix(item.room.online_price * vip)}}</view>
+          <view class="d_price2">{{item.room.online_price}}元</view>
+          <view class="d_vip">会员价</view>
+        </view>
+      </view>
     </view>
-</view>
+  </view>
   <view wx:else style='text-align:center;color:#808080;font-size:12px;'>无更多信息</view>
 </view>

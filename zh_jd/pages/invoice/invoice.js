@@ -1,46 +1,13 @@
-// zh_jd/pages/feedback/feedback.js
-var app = getApp()
+// zh_jd/pages/invoice/invoice.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    isHidePlaceholder: false,
-    value:"",
+
   },
-  // textarea 输入时触发
-  getTextareaInput: function (e) {
-    var that = this;
-    that.setData({
-      value:e.detail.value
-    })
-    if (e.detail.cursor > 0) {
-      that.setData({
-        isHidePlaceholder: true
-      })
-    } else {
-      that.setData({
-        isHidePlaceholder: false
-      })
-    }
-  },
-  sumbit:function(){
-    var that = this
-    app.util.request({
-      'url': 'index/Tool/feedback',
-      'cachetime': '0',
-      data: { feedback_content:that.data.value },
-      success: function (res) {
-        console.log(res)
-        if (res.data.success == 1){
-        wx.navigateTo({
-          url: 's_feedback',
-        })
-      }
-      }
-    })
-  },
+
   /**
    * 生命周期函数--监听页面加载
    */

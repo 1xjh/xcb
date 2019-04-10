@@ -47,6 +47,7 @@ Page({
         })
         var praiseNums = data.score.sum;//获取数据评分
         var praisestars = (praiseNums / 5) * 100 + '%';
+        console.log(praisestars,"这是我的分")
         that.setData({
           praisestars: praisestars
         })

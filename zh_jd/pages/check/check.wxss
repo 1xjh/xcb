@@ -201,10 +201,8 @@ page {
 
 .footer button:nth-child(1) {
   margin-top: 60rpx;
-  margin-bottom: 30rpx;
   background: #41ac8d;
   color: #fff;
-  /* width: 90%; */
 }
 
 .footer button:nth-child(2) {

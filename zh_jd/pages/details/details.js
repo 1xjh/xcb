@@ -11,7 +11,6 @@ Page({
     recommend:'',
     vip: 10
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
@@ -20,7 +19,6 @@ Page({
     var vip = wx.getStorageSync("users");
     if (vip) {
       vip = vip.member.value == 10 ? 1 : vip.member.value * 0.1
-      console.log(vip, "我的vip")
     }
     this.setData({
       isLogin: isLogin,
@@ -63,7 +61,6 @@ Page({
   },
   jumpDetails: function(e) {
     var id = e.currentTarget.dataset.id;
-    console.log(id);
     wx.navigateTo({
       url: '../yuanzi_details/yuanzi_details?id=' + id
     })
@@ -71,10 +68,9 @@ Page({
   // 搜索
   searchList: function(e) {
     var value = e.detail.value
+    value.length === 0 ? value = wx.getStorageSync("city") : value=value 
     this.data.parameter.name = value;
-    if (value != ""){
-      request(this);
-    }
+    request(this);
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -109,7 +105,7 @@ Page({
    */
   onPullDownRefresh: function() {
     var that = this
-    if(this.data.isList){
+    if(this.data.isList==1){
       recommend(that, 1);
     }else{
       request(that, 1);
@@ -127,7 +123,7 @@ Page({
     this.setData({
       page: this.data.page + 1
     })
-    if(this.data.isList){
+    if(this.data.isList==1){
       recommend(this, this.data.page);
     }else{
       request(this, this.data.page);
@@ -148,6 +144,7 @@ function request(e, page = 1) {
     e.data.parameter.city = wx.getStorageSync("city");
   }
   e.data.parameter.page = page;
+  e.data.parameter.is_not = 0;
   app.util.request({
     'url': 'index/Accommoda/getBywhereAccommoda',
     'cachetime': '0',
@@ -162,19 +159,19 @@ function request(e, page = 1) {
           }
           e.setData({
             room_list: tmp,
-            isList: false
+            isList: 2,
           })
         } else {
           e.setData({
             room_list: res,
-            isList: false
+            isList: 2,
           })
         }
       } else if (res.data.success == 0) {
         if (e.data.page == 1) {
           e.setData({
             room_list: [],
-            isList: true
+            isList: 2
           })
           recommend(e)
         } else {
@@ -194,7 +191,6 @@ function recommend(e, page = 1) {
   if (!e.data.parameter.seller_id){
     e.data.parameter.city = wx.getStorageSync("city");
   }
-
   e.data.parameter.page = page;
   e.data.parameter.is_not = 1;
   app.util.request({
@@ -205,18 +201,18 @@ function recommend(e, page = 1) {
         if (res.data.success == 1) {
           var res = res.data.data;
           if (e.data.page != 1) {
-            var tmp = e.data.recommend;
+            var tmp = e.data.room_list;
             for (var i = 0; i < res.length; i++) {
               tmp.push(res[i]);
             }
             e.setData({
               recommend:tmp,
-              isList: true
+              isList: 1,
             })
           } else {
             e.setData({
               recommend: res,
-              isList: true
+              isList: 1
             })
           }
         } else {

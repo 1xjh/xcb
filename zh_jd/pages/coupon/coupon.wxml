@@ -12,7 +12,7 @@
   </view>
   <!-- 有效 -->
   <view class="{{selected_effective?'show':'hidden'}}">
-    <view wx:for="{{coupon}}" wx:if="{{item.state===2}}" wx:key="index" class='active box' bindtap='coupon' data-index="{{index}}">
+    <view wx:for="{{coupon}}" wx:if="{{item.state===2}}" wx:key="index" class='activeA box' bindtap='coupon' data-index="{{index}}">
       <view class="coupon_price">
         <view>￥</view>
         <view>{{item.preferential}}

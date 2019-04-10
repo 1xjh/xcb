@@ -300,11 +300,11 @@ Page({
   },
   // 清空
   abrogate: function(e) {
-    this.setData({
-      startDate: this.data.date,
-      endDate: this.data.tomorrow,
-      time: 0
-    })
+    // this.setData({
+    //   startDate: this.data.date,
+    //   endDate: this.data.tomorrow,
+    //   times: 1
+    // })
     // this.selectActio(true)
   },
   /**

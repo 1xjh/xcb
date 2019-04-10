@@ -5,7 +5,7 @@
 .swiper {
   width: 100%;
   height: 450rpx;
-  background: #eee;
+  background: #f7f6f6;
 }
 
 .yz_banner {
@@ -28,7 +28,7 @@
 .xian {
   width: 100%;
   height: 1px;
-  background: #eee;
+  background: #f7f6f6;
 }
 
 /* 房屋类型 */
@@ -74,7 +74,7 @@
 /* 优惠 */
 
 .yz_discounts {
-  font-size: 17rpx;
+  font-size: 20rpx;
   padding: 20rpx 0;
   line-height: 32rpx;
 }
@@ -99,7 +99,7 @@
 .content_color {
   width: 100%;
   height: 100%;
-  background: #eee;
+  background: #f7f6f6;
 }
 
 /* 图标内容 */
@@ -116,7 +116,7 @@
   padding: 30rpx 0;
   justify-content: space-around;
   width: 100%;
-  background-color: #eee;
+  background-color: #f7f6f6;
 }
 
 .yz_icon_content {
@@ -125,8 +125,8 @@
 }
 
 .yz_icon_content image {
-  width: 80rpx;
-  height: 80rpx;
+  width: 60rpx;
+  height: 60rpx;
 }
 
 .yz_icon_content view {
@@ -296,7 +296,7 @@
 }
 
 .yz_reserve_title {
-  font-size: 24rpx;
+  font-size: 26rpx;
   font-family: SimSun;
   font-weight: 400;
   color: #5f5f5f;
@@ -321,27 +321,27 @@
 }
 
 .yz_reserve_content image {
-  width: 32rpx;
-  height: 34rpx;
+  width: 22rpx;
+  height: 22rpx;
   margin-right: 11rpx;
 }
 
 /* 周边房源 */
 
 .d_list {
-  background: #eee;
+  background: #f7f6f6;
   height: 100vh;
 }
 
 .d_img {
   width: 100%;
   height: 360rpx;
-  background: #0ff;
 }
 
 .d_img image {
   width: 100%;
   height: 100%;
+  border-radius: 10rpx;
 }
 
 .d_good {
@@ -349,45 +349,36 @@
 }
 
 .d_good>view {
-  margin-right: 20rpx;
-  border: 1px solid rgba(64, 171, 145, 1);
-  width: 82rpx;
+  margin:0rpx 10rpx;
+  border: 1px solid #888;
   height: 26rpx;
   font-family: SourceHanSansCN-Medium;
   font-weight: 500;
   border-radius: 5rpx;
   line-height: 16rpx;
-  margin-left: 5rpx;
 }
 
 .d_good .d_good_font {
-  font-size: 16rpx;
-  padding: 7rpx;
-  color: rgba(64, 171, 145, 1);
+  font-size: 20rpx;
+  padding: 5rpx;
+  color: #888;
   text-align: center;
 }
-
-.d_site {
-  width: 22rpx;
-  height: 31rpx;
-  background: #0ff;
-  margin: 3rpx 12rpx 0 12rpx;
-}
-
 .d_title {
   margin-top: 28rpx;
+  margin-left: 10rpx;
 }
 
 .d_site_name {
-  height: 25rpx;
-  font-size: 25rpx;
+  height:52rpx;
+  font-size: 35rpx;
   color: #222;
 }
 
 .d_info {
-  margin-left: 44rpx;
-  padding-top: 10rpx;
-  width: 308px;
+  padding-top: 15rpx;
+  margin-left:10rpx;
+  width: 315px;
 }
 
 .d_info .d_fang {
@@ -395,26 +386,17 @@
 }
 
 .d_info .d_ren {
-  font-size: 18rpx;
-  margin-left: 92rpx;
+  font-size: 20rpx;
+  margin-left: 55rpx;
+  line-height:45rpx;
 }
 
 .d_info .d_fen {
-  font-size: 18rpx;
+  font-size: 22rpx;
   color: #40ab91;
-  margin-left: 50rpx;
+  margin-left: 35rpx;
+  line-height:45rpx;
 }
-
-/* .d_price1 {
-  font-size: 24rpx;
-  padding-bottom: 16rpx;
-}
-
-.d_price2 {
-  font-size: 24rpx;
-  margin-left: 40rpx;
-} */
-
 .d_price1 {
   font-size: 30rpx;
   padding-bottom: 16rpx;
@@ -429,21 +411,17 @@
 
 .d_vip {
   margin-left: 20rpx;
-  font-size: 24rpx;
-  color: red;
+  font-size: 21rpx;
+  color: #ffa500;
+  border: 1px solid #ffdead;
+  background: #ffdead;
+  height: 31rpx;
+  padding: 0rpx 10rpx;
+  line-height: 30rpx;
+  letter-spacing: 3rpx;
+    margin-top:6rpx;
 }
 
-.d_yuding {
-  width: 86rpx;
-  height: 46rpx;
-  background: #de351f;
-  color: #fff;
-  float: right;
-  margin-right: 20rpx;
-  margin-top: -68rpx;
-  line-height: 46rpx;
-  border-radius: 6px;
-}
 
 .d_yuding>view {
   font-size: 24rpx;
@@ -455,18 +433,20 @@
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  height: 300px;
+  height: 666rpx;
 }
 
 .yz_circum_title {
   color: #40ab91;
-  background: #eee;
+  background: #f7f6f6;
 }
 
 .d_content {
   width: 100%;
   margin-left: 10px;
   background: #fff;
+  height: 630rpx;
+  box-shadow: 10px 10px 5px #888888;
 }
 
 .yz_price {
@@ -545,6 +525,7 @@ button::after {
   height: 180rpx;
   color: #40ab91;
   justify-content: space-between;
+  box-sizing:border-box;
 }
 
 .active {
@@ -592,7 +573,13 @@ button::after {
 }
 
 .yz_coupon_box {
-  display: none;
+  transition: 0.5s;
+  width: 100%;
+  height:1050rpx;
+  position: fixed;
+  background: #fff;
+  z-index: 999;
+  bottom: -1050rpx;
 }
 
 .yz_coupon_title {
@@ -601,28 +588,29 @@ button::after {
   margin: 20rpx 0;
 }
 
-.yz_coupon_dian {
-  width: 50%;
-  margin: 0 auto;
-  background: #40ab91;
-  text-align: center;
-  color: #fff;
-  border-radius: 50rpx;
-  font-size: 25rpx;
-  line-height: 50rpx;
-}
-
 .show {
-  transition: 1s;
+  transition: 0.5s;
   width: 100%;
-  height: 80%;
+  height:1050rpx;
   position: fixed;
-  bottom: 0;
   background: #fff;
   z-index: 999;
+   bottom: 0rpx;
 }
 
 .yz_quding {
+  width: 100%;
+  height: 100rpx;
+  position: fixed;
+  z-index: 1000;
+  color: #fff;
+  background: #40ab91;
+  bottom: 0;
+  text-align: center;
+  line-height: 100rpx;
+  margin-bottom: -100rpx;
+}
+.yz_qudinga {
   width: 100%;
   height: 100rpx;
   position: fixed;

@@ -55,7 +55,6 @@ function getSign(url, data, token) {
 	} else {
 		// if (url) {
 		// 	querystring = getQuery(url);  //get 参数
-    //   console.log(querystring,"ddddd");
     //   return;
 		// }
    

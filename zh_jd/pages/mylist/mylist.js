@@ -1,4 +1,3 @@
-//index.js
 //获取应用实例
 var sliderWidth = 60; // 需要设置slider的宽度，用于计算中间位置
 var app = getApp()
@@ -21,6 +20,9 @@ Page({
     aruzhu: false,
     azhifu: false,
     awancheng: false,
+    all:false,
+    // 下拉加载
+    page: 1
   },
   // 点击支付
   submitPlay: function(e) {
@@ -64,9 +66,9 @@ Page({
       }
     })
   },
-  m_call: function(e) {
+  m_call: function() {
     wx.makePhoneCall({
-      phoneNumber: e.currentTarget.dataset.phone
+      phoneNumber: '8888888' // 仅为示例，并非真实的电话号码
     })
   },
   onLoad: function() {
@@ -76,7 +78,7 @@ Page({
       sliderOffset: 0,
     })
     wx.getSystemInfo({
-      success: function (res) {
+      success: function(res) {
         if (that.data.activeIndex == 0) {
           var index = 1;
         } else {
@@ -89,73 +91,27 @@ Page({
       }
     });
   },
-  // 下拉刷新
-  onPullDownRefresh() {
-    var that = this
-    
-    that.reload()
-    wx.stopPullDownRefresh();
-  },
-  reload: function() {
-    var that = this;
-    var times = Date.parse(new Date())
-    var isLogin = wx.getStorageSync("is_lgoin")
-    that.setData({
-      isLogin:isLogin
-    })
-        // 获取订单列表
-    if (isLogin) {
-      that.setData({
-        times: times
-      })
-      app.util.request({
-        'url': 'index/Order/getUserOrder',
-        'cachetime': '0',
-        data: {},
-        success: function(res) {
-          console.log(res.data.data)
-          that.setData({
-            ruzhu: res.data.data
-          })
-          var ruzhu = that.data.ruzhu
-          var times = String(that.data.times).slice(0, 10)
-          console.log(times, "kkkkk")
-
-          times = parseInt(times)
-          for (var i = 0; i < ruzhu.length; i++) {
-            ruzhu[i].expire_time = parseInt((ruzhu[i].expire_time - times) / 60)
-            if (ruzhu[i].status === 0) {
-              that.setData({
-                azhifu: true
-              })
-            }
-            if (ruzhu[i].status == 1) {
-              that.setData({
-                aruzhu: true
-              })
-            }
-            if (ruzhu[i].status == 2) {
-              that.setData({
-                awancheng: true
-              })
-            }
-          }
-          that.setData({
-            ruzhu: ruzhu,
-          })
-        },
-      })
-    } else {
-      that.setData({
-        ruzhu: []
-      })
-    }
-  },
   tabClick: function(e) {
     this.setData({
       sliderOffset: e.currentTarget.offsetLeft,
-      activeIndex: e.currentTarget.id
+      activeIndex: e.currentTarget.id,
+      ruzhu:[]
     });
+    
+    reload(this, e.currentTarget.id, 1)
+  },
+  // 下拉刷新
+  onPullDownRefresh() {
+    var that = this
+    that.onLoad()
+    wx.stopPullDownRefresh();
+  },
+  // 上拉加载
+  onReachBottom: function() {
+    this.setData({
+      page: this.data.page + 1
+    })
+    reload(this, this.data.option, this.data.page)
   },
   one_list: function() {
     wx.navigateTo({
@@ -218,6 +174,92 @@ Page({
    */
   onShow: function() {
     var that = this
-    that.reload()
+    reload(that, 0, 1)
   },
 });
+// 请求
+function reload(e, option, page) {
+  var that = e;
+  var times = Date.parse(new Date())
+
+  var isLogin = wx.getStorageSync("is_lgoin")
+  that.setData({
+    isLogin: isLogin,
+    option: option
+  })
+  var status = "0"
+  switch (option) {
+    case "all":
+      status = "all"
+      break
+    case "0":
+      status = 0
+      break
+    case "1":
+      status = 1
+      break
+    case "2":
+      status = 4
+      break
+  }
+  // 获取订单列表
+  if (isLogin) {
+    that.setData({
+      times: times
+    })
+    app.util.request({
+      'url': 'index/Order/getUserOrder',
+      'cachetime': '0',
+      data: {
+        status: status,
+        page: page
+      },
+      success: function(res) {
+        var ruzhu = res.data.data
+        var times = String(that.data.times).slice(0, 10)
+        if(ruzhu.length!=0){
+          that.setData({
+           all:true
+          })
+        }
+        times = parseInt(times)
+        for (var i = 0; i < ruzhu.length; i++) {
+          ruzhu[i].expire_time = parseInt((ruzhu[i].expire_time - times) / 60)
+          if (ruzhu[i].status === 0) {
+            that.setData({
+              azhifu: true
+            })
+          }
+          if (ruzhu[i].status == 1) {
+            that.setData({
+              aruzhu: true
+            })
+          }
+          if (ruzhu[i].status == 4) {
+            that.setData({
+              awancheng: true
+            })
+          }
+        }
+        if (that.data.page != 1) {
+          var tmp = that.data.ruzhu;
+          console.log(tmp,"要添加的数据")
+          for (var i = 0; i < ruzhu.length; i++) {
+            tmp.push(ruzhu[i]);
+          }
+          that.setData({
+            ruzhu: tmp,
+          })
+        }else{
+          that.setData({
+            ruzhu: ruzhu,
+          })
+        }
+      },
+    })
+  } else {
+    that.setData({
+      ruzhu: []
+    })
+  }
+}

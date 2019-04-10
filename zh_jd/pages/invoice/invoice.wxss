@@ -1,0 +1,10 @@
+/* zh_jd/pages/invoice/invoice.wxss */
+.about{
+  font-size:60rpx;
+  font-family:SimSun;
+  font-weight:400;
+  color:rgba(34,34,34,1);
+  width: 90%;
+  text-align: center;
+  margin: 30rpx auto;
+}

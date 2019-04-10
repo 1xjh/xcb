@@ -1,11 +1,13 @@
 /* 实现textarea高度自适应 */
-page{
+
+page {
   margin: 0 !important;
 }
+
 .detail-view {
   position: relative;
   margin: 40rpx 20rpx;
-  min-height: 900rpx;
+  height: 900rpx;
 }
 
 .detail-placeholder {
@@ -17,18 +19,15 @@ page{
 }
 
 .detail-textarea {
-  width:85%;
+  width: 85%;
   margin: 0 auto;
   font-size: 30rpx;
-  height: 65vh !important;
-  line-height: 62rpx;
-}
-
-.images {
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height:78vh;
+  background-image: url(https://www.tiantiandj.com/xcx/upload/notable/bg.png);
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  -moz-background-size: 100% 100%;
+  line-height: 60rpx;
 }
 
 .feedback_title {
@@ -39,13 +38,14 @@ page{
   font-weight: 500;
   color: rgba(34, 34, 34, 1);
 }
-.feedback_sumbit{
+
+.feedback_sumbit {
   width: 100%;
   height: 100rpx;
-  background:#40AB91;
+  background: #40ab91;
   text-align: center;
-  color:#fff;
+  color: #fff;
   line-height: 100rpx;
   position: fixed;
-  bottom:0;
+  bottom: 0;
 }

@@ -19,6 +19,15 @@
   color: #A4A4A4;
   justify-content: space-between;
 }
+.activeA {
+  border: 1px solid #41ac8d;
+  border-right: none;
+  width: 95%;
+  margin: 20rpx auto;
+  height: 180rpx;
+  color: #41ac8d;
+  justify-content: space-between;
+}
 .coupon_price {
   font-size: 60rpx;
   font-family: FZCQJW--GB1-0;

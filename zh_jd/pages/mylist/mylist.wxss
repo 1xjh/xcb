@@ -4,16 +4,13 @@ page {
   background: #f5f5f5;
 }
 
-page, .page, .page__bd {
-  height: 100%;
-}
-
 .page__bd {
   padding-bottom: 0;
 }
 
 .weui-tab__content {
   padding-top: 60px;
+  margin-bottom: 30rpx;
 }
 
 .weui-navbar__slider {
@@ -182,6 +179,7 @@ page, .page, .page__bd {
   /* padding-top: 40%;  */
   color: #999;
   font-size: 28rpx;
+  margin-bottom: 30rpx;
 }
 
 .mylist_back2 {

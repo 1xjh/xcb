@@ -80,10 +80,8 @@ Page({
         longitude: longitude
       },
       success: function(res) {
-        // console.log(JSON.stringify(res));
         let province = res.result.ad_info.province
         let city = res.result.ad_info.city
-        city = city.substring(0, city.length - 1);
         wx.setStorageSync("city", city);
         jia(vm, city)
         pintai(vm, city)
@@ -215,12 +213,22 @@ Page({
       url: '../yuanzi_details/yuanzi_details?id=' + id
     })
   },
+  // 轮播跳转
+
   clickimg: function(e) {
     var that = this;
-    var index = e.currentTarget.dataset.index
-    console.log(that.data.platform.banner)
-    console.log(index)
+    var item = e.currentTarget.dataset.item
+    if(item.type){
+      if (item.type == "hotel"){
+        wx.navigateTo({
+          url: '../yuanzi_details/yuanzi_details?id=' + item.val
+        })
+      }else{
+        console.log("暂未开通")
+      }
+    }
   },
+
   // 轮播图尺寸设置
   bannerImg: function(e) {
     var that = this
@@ -442,7 +450,6 @@ Page({
       wx.setStorageSync('is_onsale', is_onsale)
       wx.switchTab({
         url: '../hotel/hotel',
-
       })
     }
     if (is_top) {

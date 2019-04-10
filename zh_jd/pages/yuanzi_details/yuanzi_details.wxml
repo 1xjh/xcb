@@ -26,15 +26,14 @@
   <view class='xian'></view>
   <!-- 优惠 -->
   <view class="yz_discounts box">
+    <view class="yz_coupon_dian" bindtap='junmpCoupon'>领取优惠</view>
     <view>连住优惠</view>
     <view wx:for="{{details.favourable}}" wx:key="key">
       {{item.day}}天{{item.Sale}}折
     </view>
   </view>
   <view class="yz_coupon box">
-    <view class="yz_coupon_dian" bindtap='junmpCoupon'>点击领取店铺优惠卷</view>
-    <!-- 店铺优惠卷 -->
-    <view class="show  {{coupon_index ? 'yz_coupon_box' : ''}}">
+    <view class=" {{coupon_index ? 'yz_coupon_box' : 'show'}}">
       <view class="yz_coupon_title">店铺优惠卷</view>
       <view wx:for="{{coupon}}" wx:key="index" class='{{item.state===0? "coupon" : "active"}} box' bindtap='coupon' data-index="{{index}}">
         <view class="coupon_price">
@@ -53,7 +52,7 @@
           <image src="{{item.state===0? hasSelect : noSelect}}"></image>
         </view>
       </view>
-      <view class='yz_quding' bindtap='junmpCoupon'>确定</view>
+      <view class="{{coupon_index ? 'yz_quding' : 'yz_qudinga'}}" bindtap='junmpCoupon'>确定</view>
     </view>
   </view>
   <view class="content_color">
@@ -119,7 +118,7 @@
                   <image src='../../images/xing-hui@3x.png'></image>
                 </view>
               </view>
-              <view class="stars" style="width: {{(item.score/5) * 100 + '%'}};">
+              <view class="stars" style="width: {{(details.room_score/5) * 100 + '%'}};">
                 <view>
                   <image src="../../images/xing-hong@3x.png"></image>
                   <image src="../../images/xing-hong@3x.png"></image>
@@ -130,7 +129,7 @@
               </view>
             </view>
           </view>
-          <view class="yz_pingJia_title">综合评价 {{filters.toFix(item.score)}}</view>
+          <view class="yz_pingJia_title">综合评价 {{details.room_score}}</view>
           <image src='../../images/jiantou1.png'></image>
         </view>
       </view>
@@ -154,9 +153,9 @@
         <view class='yz_title'>交通位置</view>
         <image src='../../images/jiantou1.png'></image>
       </view>
-        <view bindtap='intoMap' id="myMap" class="mapImage" markers="{{markers}}" >
-              <image src='{{details.map}}'></image>
-        </view>
+      <view bindtap='intoMap' id="myMap" class="mapImage" markers="{{markers}}">
+        <image src='{{details.map}}'></image>
+      </view>
       <!-- <map bindtap='intoMap' id="myMap" markers="{{markers}}" style="width:100%;height:244rpx;" longitude="116.313972" latitude="39.980014" scale='16'>
       </map> -->
 
@@ -169,19 +168,19 @@
       </view>
       <view class='yz_icon_title box'>
         <view class="yz_icon_content box" wx:if="{{details.setting.home[1]==1}}">
-           <image src='../../images/home1.png'></image>
+          <image src='../../images/home1.png'></image>
           <text>无线网络</text>
         </view>
-        <view class="yz_icon_content box"  wx:if="{{details.setting.home[2]==1}}">
+        <view class="yz_icon_content box" wx:if="{{details.setting.home[2]==1}}">
           <image src='../../images/home2.png'></image>
           <text>空调</text>
         </view>
-        <view class="yz_icon_content box"  wx:if="{{details.setting.home[3]==1}}">
+        <view class="yz_icon_content box" wx:if="{{details.setting.home[3]==1}}">
           <image src='../../images/home3.png'></image>
           <text>电视 </text>
         </view>
-        <view class="yz_icon_content box"  wx:if="{{details.setting.home[6]==1}}">
-           <image src='../../images/home6.png'></image>
+        <view class="yz_icon_content box" wx:if="{{details.setting.home[6]==1}}">
+          <image src='../../images/home6.png'></image>
           <text>热水壶</text>
         </view>
         <view>
@@ -251,8 +250,6 @@
             </view>
           </view>
           <view class="d_title box">
-            <view class="d_site">
-            </view>
             <view class="d_site_name">{{item.s_name}}</view>
           </view>
           <view class="d_info box">
@@ -285,7 +282,7 @@
       <view class='box'>
         <view class='yz_icon_title box'>
           <view class="yz_icon_content box">
-            <button class='button_server' open-type="contact">
+            <button class='button_server' open-type="contact" show-message-card="true">
               <image src='../../images/chat.png'></image>
               <text>聊天</text>
             </button>
